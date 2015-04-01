@@ -32,7 +32,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.saprykin.surveyapp.model" });
+        sessionFactory.setPackagesToScan(new String[] { "com.saprykin.ats.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
