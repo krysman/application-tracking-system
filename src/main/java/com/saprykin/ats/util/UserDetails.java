@@ -1,4 +1,4 @@
-package com.saprykin.surveyapp.util;
+package com.saprykin.ats.util;
 
 public class UserDetails {
 

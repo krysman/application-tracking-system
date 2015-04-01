@@ -1,4 +1,4 @@
-package com.saprykin.surveyapp.util;
+package com.saprykin.ats.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

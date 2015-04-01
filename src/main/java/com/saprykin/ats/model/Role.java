@@ -1,4 +1,4 @@
-package com.saprykin.surveyapp.model;
+package com.saprykin.ats.model;
 
 
 import javax.persistence.*;

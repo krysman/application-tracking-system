@@ -1,10 +1,10 @@
-package com.saprykin.surveyapp.service;
+package com.saprykin.ats.dao;
 
-import com.saprykin.surveyapp.model.Pool;
+import com.saprykin.ats.model.Pool;
 
 import java.util.List;
 
-public interface PoolService {
+public interface PoolDao {
 
     void savePool(Pool pool);
 

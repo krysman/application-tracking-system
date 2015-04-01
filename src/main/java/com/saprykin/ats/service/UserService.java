@@ -1,11 +1,11 @@
-package com.saprykin.surveyapp.dao;
+package com.saprykin.ats.service;
 
 
-import com.saprykin.surveyapp.model.User;
+import com.saprykin.ats.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserService {
 
     void saveUser(User user);
 
@@ -18,5 +18,4 @@ public interface UserDao {
     User findUserByEmail(String email);
 
     void updateUser(User user);
-
 }

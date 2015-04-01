@@ -1,16 +1,16 @@
-package com.saprykin.surveyapp;
+package com.saprykin.ats;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.saprykin.surveyapp.configuration.AppConfig;
-import com.saprykin.surveyapp.model.Pool;
-import com.saprykin.surveyapp.model.Role;
-import com.saprykin.surveyapp.model.User;
-import com.saprykin.surveyapp.service.PoolService;
-import com.saprykin.surveyapp.service.RoleService;
-import com.saprykin.surveyapp.service.UserService;
+import com.saprykin.ats.configuration.AppConfig;
+import com.saprykin.ats.model.Pool;
+import com.saprykin.ats.model.Role;
+import com.saprykin.ats.model.User;
+import com.saprykin.ats.service.PoolService;
+import com.saprykin.ats.service.RoleService;
+import com.saprykin.ats.service.UserService;
 
-import com.saprykin.surveyapp.util.JsonTransformer;
-import com.saprykin.surveyapp.util.UserDetails;
+import com.saprykin.ats.util.JsonTransformer;
+import com.saprykin.ats.util.UserDetails;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,13 +68,13 @@ public class App {
         Random random = new Random();
 
         User user1 = new User();
-        user1.setEmail("foo" + random.nextInt(10000) * random.nextDouble() + "@bar.com");
+        user1.setEmail("user@bar.com");
         user1.setEmailConfirmation(false);
         user1.setEmailNotifications(false);
         user1.setRole(userRole);
 
         User user2 = new User();
-        user2.setEmail("bar" + random.nextInt(10000) * random.nextDouble() + "@foo.com");
+        user2.setEmail("admin@foo.com");
         user2.setEmailConfirmation(true);
         user2.setEmailNotifications(true);
         user2.setRole(adminRole);

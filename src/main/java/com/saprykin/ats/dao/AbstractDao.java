@@ -1,4 +1,4 @@
-package com.saprykin.surveyapp.dao;
+package com.saprykin.ats.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

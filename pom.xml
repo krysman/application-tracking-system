@@ -27,7 +27,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.saprykin.surveyapp.App</mainClass>
+                            <mainClass>com.saprykin.ats.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

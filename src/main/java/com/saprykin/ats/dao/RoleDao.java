@@ -1,10 +1,11 @@
-package com.saprykin.surveyapp.service;
+package com.saprykin.ats.dao;
 
-import com.saprykin.surveyapp.model.Role;
+
+import com.saprykin.ats.model.Role;
 
 import java.util.List;
 
-public interface RoleService {
+public interface RoleDao {
 
     void saveRole(Role role);
 

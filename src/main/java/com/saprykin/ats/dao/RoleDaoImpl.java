@@ -1,6 +1,6 @@
-package com.saprykin.surveyapp.dao;
+package com.saprykin.ats.dao;
 
-import com.saprykin.surveyapp.model.Role;
+import com.saprykin.ats.model.Role;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;

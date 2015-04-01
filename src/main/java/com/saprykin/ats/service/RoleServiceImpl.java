@@ -1,7 +1,7 @@
-package com.saprykin.surveyapp.service;
+package com.saprykin.ats.service;
 
-import com.saprykin.surveyapp.dao.RoleDao;
-import com.saprykin.surveyapp.model.Role;
+import com.saprykin.ats.dao.RoleDao;
+import com.saprykin.ats.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,10 +1,10 @@
-package com.saprykin.surveyapp.configuration;
+package com.saprykin.ats.configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.saprykin.surveyapp")
+@ComponentScan(basePackages = "com.saprykin.ats")
 public class AppConfig {
 
     /*

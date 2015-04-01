@@ -1,9 +1,9 @@
-package com.saprykin.surveyapp.service;
+package com.saprykin.ats.service;
 
 import java.util.List;
 
-import com.saprykin.surveyapp.dao.UserDao;
-import com.saprykin.surveyapp.model.User;
+import com.saprykin.ats.dao.UserDao;
+import com.saprykin.ats.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

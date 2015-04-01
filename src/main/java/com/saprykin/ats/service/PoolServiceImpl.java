@@ -1,7 +1,7 @@
-package com.saprykin.surveyapp.service;
+package com.saprykin.ats.service;
 
-import com.saprykin.surveyapp.dao.PoolDao;
-import com.saprykin.surveyapp.model.Pool;
+import com.saprykin.ats.dao.PoolDao;
+import com.saprykin.ats.model.Pool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

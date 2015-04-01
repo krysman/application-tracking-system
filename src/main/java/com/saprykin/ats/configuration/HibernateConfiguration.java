@@ -1,4 +1,4 @@
-package com.saprykin.surveyapp.configuration;
+package com.saprykin.ats.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ import java.util.Properties;
 
 @Configuration // indicates that this class contains one or more bean methods annotated with @Bean producing beans manageable by spring container
 @EnableTransactionManagement // is equivalent to Spring’s tx:* XML namespace, enabling Spring’s annotation-driven transaction management capability.
-@ComponentScan({ "com.saprykin.surveyapp.configuration" }) // providing with where to look for spring managed beans/classes
+@ComponentScan({"com.saprykin.ats.configuration"}) // providing with where to look for spring managed beans/classes
 public class HibernateConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(HibernateConfiguration.class);
