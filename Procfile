@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/surveyapp-1.0-SNAPSHOT-jar-with-dependencies.jar
+web: java $JAVA_OPTS -jar target/ats-1.0-SNAPSHOT-jar-with-dependencies.jar
