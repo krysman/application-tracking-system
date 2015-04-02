@@ -117,7 +117,7 @@ public class App {
             logger.info("Before filter /   ends...");
         });
 
-        get("/createApplicant", "application/json", (request, response) -> {
+        post("/createApplicant", "application/json", (request, response) -> {
             BufferedReader br = null;
             List userInputString;
             try {
