@@ -22,7 +22,12 @@ $(document).ready(function() {
             },
 
             success: function(data) {
-                swal(data, "Applicant info added!", "success")
+                if(data == "Success") {
+                    swal("Success", "Applicant info added!", "success")
+                } else {
+                    swal(data, "Applicant info added!", "success")
+                }
+
             },
             error:function(data,status,er) {
                 sweetAlert("Oops...", "error: " + data + " status: " + status + " er:" + er, "error");
