@@ -26,9 +26,17 @@ import spark.Route;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+
+// Document Object
+import com.itextpdf.text.Document;
+//For adding content into PDF document
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.DocumentException;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
@@ -162,6 +170,43 @@ public class App {
             return applicantService.findAllApplicants();
         }, new JsonTransformer());
 
+        get("/pdfapplicants", "application/pdf", (request, response) -> {
+            logger.info("Called hhtp GET method    /applicants");
+
+            //Set content type to application / pdf
+            //browser will open the document only if this is set
+           // response.raw().setContentType("application/pdf");
+            //Get the output stream for writing PDF object
+
+            //OutputStream out=response.raw().getOutputStream();
+            Document document;
+            try {
+                document = new Document();
+            /* Basic PDF Creation inside servlet */
+                //PdfWriter.getInstance(document, out);
+                document.open();
+                document.add(new Paragraph("Plain text"));
+                document.add(new Paragraph("Список абитуриентов:"));
+
+                List<Applicant> applicantList = applicantService.findAllApplicants();
+                for(Applicant applicant: applicantList) {
+                    document.add(new Paragraph("Абитуриент:"));
+                    document.add(new Paragraph(applicant.toString()));
+                }
+                document.add(new Paragraph("Plain text"));
+                document.close();
+            }
+            catch (DocumentException exc){
+                throw new IOException(exc.getMessage());
+            }
+            finally {
+                //out.close();
+            }
+
+
+            return document;
+        });
+
 
 
 
@@ -275,4 +320,35 @@ public class App {
         java.lang.String log4jConfPath = "web/WEB-INF/classes/log4j.properties";
         PropertyConfigurator.configure(log4jConfPath);
     }
+
 }
+
+/*
+//Set content type to application / pdf
+            //browser will open the document only if this is set
+            response.raw().setContentType("application/pdf");
+            //Get the output stream for writing PDF object
+
+            OutputStream out=response.raw().getOutputStream();
+            try {
+                Document document = new Document();
+            /* Basic PDF Creation inside servlet */
+/*PdfWriter.getInstance(document, out);
+        document.open();
+        document.add(new Paragraph("Plain text"));
+        document.add(new Paragraph("Список абитуриентов:"));
+
+        List<Applicant> applicantList = applicantService.findAllApplicants();
+        for(Applicant applicant: applicantList) {
+        document.add(new Paragraph("Абитуриент:"));
+        document.add(new Paragraph(applicant.toString()));
+        }
+        document.add(new Paragraph("Plain text"));
+        document.close();
+        }
+        catch (DocumentException exc){
+        throw new IOException(exc.getMessage());
+        }
+        finally {
+        out.close();
+        }*/
