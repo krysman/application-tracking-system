@@ -118,9 +118,41 @@ public class App {
         });
 
         get("/createApplicant", "application/json", (request, response) -> {
-            logger.info("Called hhtp GET method    /users");
+            BufferedReader br = null;
+            List userInputString;
+            try {
+                br = new BufferedReader(new InputStreamReader(request.raw().getInputStream()));
+                java.lang.String json = br.readLine();
 
-            return userService.findAllUsers();
+                // 2. initiate jackson mapper
+                ObjectMapper mapper = new ObjectMapper();
+
+                // 3. Convert received JSON to String
+                userInputString = mapper.readValue(json, List.class);
+            } catch(IOException e) {
+                String exceptionString = "Some shit happened while trying to get user input from JSON file!!!!!" + e.toString();
+                logger.error(exceptionString);
+                return exceptionString;
+            }
+
+            // validate userInputString
+
+            String validatedUserFirstName = "fn";
+            validatedUserFirstName = (String) userInputString.get(0);
+            String validatedUserLastName = "ln";
+            validatedUserLastName = (String) userInputString.get(1);
+
+            // check if user with inputted e-mail exist in DB
+            Applicant applicant = new Applicant();
+            applicant.setFirstName(validatedUserFirstName);
+            applicant.setLastName(validatedUserFirstName);
+            applicant.setDateOfBirth(LocalDate.now());
+
+            applicantService.saveApplicant(applicant);
+
+            return "Success";
+
+
         }, new JsonTransformer());
 
         get("/applicants", "application/json", (request, response) -> {
