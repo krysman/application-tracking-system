@@ -11,6 +11,7 @@ import com.saprykin.ats.service.PoolService;
 import com.saprykin.ats.service.RoleService;
 import com.saprykin.ats.service.UserService;
 
+import com.saprykin.ats.util.JsonAddNewApplicant;
 import com.saprykin.ats.util.JsonTransformer;
 import com.saprykin.ats.util.UserDetails;
 import org.apache.log4j.PropertyConfigurator;
@@ -119,7 +120,7 @@ public class App {
 
         post("/createApplicant", "application/json", (request, response) -> {
             BufferedReader br = null;
-            List userInputString;
+            JsonAddNewApplicant jsonAddNewApplicant;
             try {
                 br = new BufferedReader(new InputStreamReader(request.raw().getInputStream()));
                 java.lang.String json = br.readLine();
@@ -128,7 +129,7 @@ public class App {
                 ObjectMapper mapper = new ObjectMapper();
 
                 // 3. Convert received JSON to String
-                userInputString = mapper.readValue(json, List.class);
+                jsonAddNewApplicant = mapper.readValue(json, JsonAddNewApplicant.class);
             } catch(IOException e) {
                 String exceptionString = "Some shit happened while trying to get user input from JSON file!!!!!" + e.toString();
                 logger.error(exceptionString);
@@ -138,9 +139,9 @@ public class App {
             // validate userInputString
 
             String validatedUserFirstName = "fn";
-            validatedUserFirstName = (String) userInputString.get(0);
+            validatedUserFirstName = jsonAddNewApplicant.getFirstName();
             String validatedUserLastName = "ln";
-            validatedUserLastName = (String) userInputString.get(1);
+            validatedUserLastName = jsonAddNewApplicant.getLastName();
 
             // check if user with inputted e-mail exist in DB
             Applicant applicant = new Applicant();
