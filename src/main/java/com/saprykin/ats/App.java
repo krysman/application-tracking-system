@@ -5,6 +5,7 @@ import com.saprykin.ats.configuration.AppConfig;
 import com.saprykin.ats.model.Pool;
 import com.saprykin.ats.model.Role;
 import com.saprykin.ats.model.User;
+import com.saprykin.ats.service.ApplicantService;
 import com.saprykin.ats.service.PoolService;
 import com.saprykin.ats.service.RoleService;
 import com.saprykin.ats.service.UserService;
@@ -74,6 +75,9 @@ public class App {
         userService.saveUser(user1);
         userService.saveUser(user2);
 
+
+        ApplicantService applicantService = (ApplicantService) context.getBean("applicantService");
+
         // ... check if we remember this user
         before((request, response) -> {
 
@@ -113,7 +117,7 @@ public class App {
         get("/applicants", "application/json", (request, response) -> {
             logger.info("Called hhtp GET method    /applicants");
 
-            return userService.findAllUsers();
+            return applicantService.findAllApplicants();
         }, new JsonTransformer());
 
 
