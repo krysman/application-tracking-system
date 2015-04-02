@@ -171,43 +171,68 @@ public class App {
         }, new JsonTransformer());
 
         get("/pdfapplicants", "application/pdf", (request, response) -> {
-            logger.info("Called hhtp GET method    /applicants");
+            logger.info("Called hhtp GET method    /pdfapplicants");
 
             //Set content type to application / pdf
             //browser will open the document only if this is set
-           // response.raw().setContentType("application/pdf");
+            response.raw().setContentType("application/pdf");
             //Get the output stream for writing PDF object
 
-            //OutputStream out=response.raw().getOutputStream();
-            Document document;
+            OutputStream out = response.raw().getOutputStream();
             try {
-                document = new Document();
+                Document document = new Document();
             /* Basic PDF Creation inside servlet */
-                //PdfWriter.getInstance(document, out);
+                PdfWriter.getInstance(document, out);
                 document.open();
                 document.add(new Paragraph("Plain text"));
                 document.add(new Paragraph("Список абитуриентов:"));
 
                 List<Applicant> applicantList = applicantService.findAllApplicants();
-                for(Applicant applicant: applicantList) {
+                for(Applicant applicant : applicantList) {
                     document.add(new Paragraph("Абитуриент:"));
                     document.add(new Paragraph(applicant.toString()));
                 }
                 document.add(new Paragraph("Plain text"));
                 document.close();
-            }
-            catch (DocumentException exc){
+            } catch(DocumentException exc) {
                 throw new IOException(exc.getMessage());
-            }
-            finally {
-                //out.close();
+            } finally {
+                out.close();
             }
 
+            //Set content type to application / pdf
+            //browser will open the document only if this is set
+            // response.raw().setContentType("application/pdf");
+            //Get the output stream for writing PDF object
 
-            return document;
+            //OutputStream out=response.raw().getOutputStream();
+            //Document document;
+//            try {
+//                document = new Document();
+//            /* Basic PDF Creation inside servlet */
+//                //PdfWriter.getInstance(document, out);
+//                document.open();
+//                document.add(new Paragraph("Plain text"));
+//                document.add(new Paragraph("Список абитуриентов:"));
+//
+//                List<Applicant> applicantList = applicantService.findAllApplicants();
+//                for(Applicant applicant: applicantList) {
+//                    document.add(new Paragraph("Абитуриент:"));
+//                    document.add(new Paragraph(applicant.toString()));
+//                }
+//                document.add(new Paragraph("Plain text"));
+//                document.close();
+//            }
+//            catch (DocumentException exc){
+//                throw new IOException(exc.getMessage());
+//            }
+//            finally {
+//                //out.close();
+//            }
+
+
+            return response;
         });
-
-
 
 
         get("/users", "application/json", (request, response) -> {
@@ -263,7 +288,7 @@ public class App {
             }
 
             // add cookie
-            res.cookie("userEmailSurveyApp", validatedUserEmail, 60*60*24*30, true);
+            res.cookie("userEmailSurveyApp", validatedUserEmail, 60 * 60 * 24 * 30, true);
 
             // set session attribute
             if(userExist) {
