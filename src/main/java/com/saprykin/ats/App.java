@@ -2,6 +2,7 @@ package com.saprykin.ats;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saprykin.ats.configuration.AppConfig;
+import com.saprykin.ats.model.Applicant;
 import com.saprykin.ats.model.Pool;
 import com.saprykin.ats.model.Role;
 import com.saprykin.ats.model.User;
@@ -77,6 +78,14 @@ public class App {
 
 
         ApplicantService applicantService = (ApplicantService) context.getBean("applicantService");
+        Applicant applicant1 = new Applicant();
+        applicant1.setDateOfBirth(LocalDate.now());
+        applicant1.setFirstName("Ivan");
+        applicant1.setLastName("Saprykin");
+        applicant1.setMiddleName("Igorevich");
+        applicant1.setFullAddress("Sevastopol, yl Yniversitetskaya 26, kv 1676");
+
+        applicantService.saveApplicant(applicant1);
 
         // ... check if we remember this user
         before((request, response) -> {
@@ -185,7 +194,7 @@ public class App {
                 logger.info("Add user details after logging in session");
                 return userDetails;
             } else {
-                return "User with e-mail:" + userInputString + " doesn't exist!\n";
+                return "User with e-mail:" + userInputString + " does not exist!";
             }
 
         }, new JsonTransformer());

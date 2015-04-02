@@ -76,4 +76,16 @@ public class Applicant {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    @Override
+    public String toString() {
+        return "Applicant{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", fullAddress='" + fullAddress + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
+    }
 }
