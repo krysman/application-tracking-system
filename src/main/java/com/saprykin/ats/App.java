@@ -48,14 +48,6 @@ public class App {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = (UserService) context.getBean("userService");
         RoleService roleService = (RoleService) context.getBean("roleService");
-        PoolService poolService = (PoolService) context.getBean("poolService");
-
-        Pool pool1 = new Pool();
-        pool1.setCreationDate(LocalDate.now());
-        pool1.setTitle("New pool!");
-        pool1.setDurationInDays(7);
-
-        poolService.savePool(pool1);
 
         Role userRole = new Role();
         userRole.setName("user");
@@ -112,27 +104,25 @@ public class App {
             logger.info("Before filter /   ends...");
         });
 
-        get("/users", "application/json", (request, response) -> {
+        get("/createApplicant", "application/json", (request, response) -> {
             logger.info("Called hhtp GET method    /users");
 
             return userService.findAllUsers();
         }, new JsonTransformer());
 
-        get("/pools", "application/json", (request, response) -> {
-            logger.info("Called hhtp GET method    /pools");
+        get("/applicants", "application/json", (request, response) -> {
+            logger.info("Called hhtp GET method    /applicants");
 
-            return poolService.findAllPools();
+            return userService.findAllUsers();
         }, new JsonTransformer());
 
-        get("/pool", "application/json", (request, response) -> {
-            logger.info("Called hhtp GET method    /pool");
-            List<Pool> pools = poolService.findAllPools();
-            Pool pool = pools.get(0);
-            Random r = new Random();
-            pool.setTitle("Brand new pool! " + r.nextInt(10000));
-            poolService.updatePool(pool);
 
-            return poolService.findAllPools();
+
+
+        get("/users", "application/json", (request, response) -> {
+            logger.info("Called hhtp GET method    /users");
+
+            return userService.findAllUsers();
         }, new JsonTransformer());
 
         get("/info", new Route() {
