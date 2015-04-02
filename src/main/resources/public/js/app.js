@@ -11,8 +11,8 @@ var app = angular.module('ats', [
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'views/mainPage.html'//,
-        //controller: 'MainPageCtrl'
+        templateUrl: 'views/mainPage.html',
+        controller: 'MainPageCtrl'
     }).when('/createApplicant', {
         templateUrl: 'views/newApplicant.html',
         controller: 'CreateCtrl'
@@ -42,7 +42,7 @@ app.controller('AllApplicantsCtrl', function ($scope, $http) {
 });
 
 app.controller('CreateCtrl', function ($scope, $http, $location) {
-    $scope.todo = {
+   /* $scope.todo = {
         done: false
     };
 
@@ -53,5 +53,9 @@ app.controller('CreateCtrl', function ($scope, $http, $location) {
         }).error(function (data, status) {
             console.log('Error ' + data)
         })
-    }
+    }*/
 });
+
+app.constructor('MainPageCtrl', function($scope, $http, $location) {
+
+})
