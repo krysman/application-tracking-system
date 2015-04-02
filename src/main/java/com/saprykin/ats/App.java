@@ -146,7 +146,7 @@ public class App {
             // check if user with inputted e-mail exist in DB
             Applicant applicant = new Applicant();
             applicant.setFirstName(validatedUserFirstName);
-            applicant.setLastName(validatedUserFirstName);
+            applicant.setLastName(validatedUserLastName);
             applicant.setDateOfBirth(LocalDate.now());
 
             applicantService.saveApplicant(applicant);

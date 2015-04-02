@@ -22,10 +22,11 @@ $(document).ready(function() {
             },
 
             success: function(data) {
-                alert(data);
+                swal(data, "Applicant info added!", "success")
             },
             error:function(data,status,er) {
-                alert("error: " + data + " status: " + status + " er:" + er);
+                sweetAlert("Oops...", "error: " + data + " status: " + status + " er:" + er, "error");
+                //alert("error: " + data + " status: " + status + " er:" + er);
             }
         });
 
