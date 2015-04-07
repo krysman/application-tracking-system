@@ -1,24 +1,16 @@
 package com.saprykin.ats.util;
 
+/*
+В session должны быть thread-safe объекты, поетому поля объявлены final
+ */
 public class UserDetails {
 
-    private int userId;
-    private String role;
-
-    public UserDetails() {
-    }
+    private final int userId;
+    private final String role;
 
     public UserDetails(int userId, String role) {
         this.userId = userId;
         this.role = role;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getRole() {
-        return role;
     }
 
     @Override

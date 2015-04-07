@@ -87,6 +87,14 @@ public class App {
 
 
         ApplicantService applicantService = (ApplicantService) context.getBean("applicantService");
+
+        Applicant applicant2 = new Applicant();
+        applicant2.setDateOfBirth(LocalDate.now());
+        applicant2.setFirstName("Ivan");
+        applicant2.setLastName("Ivanov");
+        applicant2.setMiddleName("Ivanovich");
+        applicant2.setFullAddress("Sevastopol, yl Gogolya 13, kv 8");
+
         Applicant applicant1 = new Applicant();
         applicant1.setDateOfBirth(LocalDate.now());
         applicant1.setFirstName("Ivan");
@@ -95,6 +103,7 @@ public class App {
         applicant1.setFullAddress("Sevastopol, yl Yniversitetskaya 26, kv 1676");
 
         applicantService.saveApplicant(applicant1);
+        applicantService.saveApplicant(applicant2);
 
         // ... check if we remember this user
         before((request, response) -> {
@@ -182,6 +191,16 @@ public class App {
             try {
                 Document document = new Document();
             /* Basic PDF Creation inside servlet */
+                /*
+                BaseFont helvetica =
+                    BaseFont.createFont(
+                        BaseFont.HELVETICA,
+                         BaseFont.CP1251,
+                        BaseFont.NOT_EMBEDDED);
+                Font font = new Font(helvetica, 12);
+                String text1 = "бла-бла-бла";
+                document.add(new Paragraph(text1, font));
+                 */
                 PdfWriter.getInstance(document, out);
                 document.open();
                 document.add(new Paragraph("Plain text"));

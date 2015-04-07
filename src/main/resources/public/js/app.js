@@ -1,7 +1,9 @@
 /**
  * Created by Ivan on 4/2/2015.
  */
-
+// AngularJS Fundamentals In 60-ish Minutes   -   https://www.youtube.com/watch?v=i9MHigUZKEM
+// dfs
+    
 var app = angular.module('ats', [
     'ngCookies',
     'ngResource',
